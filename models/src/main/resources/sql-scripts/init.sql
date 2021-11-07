@@ -1,0 +1,1 @@
+INSERT INTO customer (username, firstName, lastName, yearBorn, funds) VALUES ('testuser1', 'User', 'Bloke', 1998, 1234.5);
