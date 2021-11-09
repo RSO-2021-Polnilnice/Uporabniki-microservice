@@ -1,7 +1,7 @@
-package si.fri.rso.chargingstations.customers.models.converters;
+package si.fri.rso.uporabniki.models.converters;
 
-import si.fri.rso.chargingstations.customers.lib.Customer;
-import si.fri.rso.chargingstations.customers.models.entities.CustomerEntity;
+import si.fri.rso.uporabniki.lib.Customer;
+import si.fri.rso.uporabniki.models.entities.CustomerEntity;
 
 public class CustomerConverter {
 

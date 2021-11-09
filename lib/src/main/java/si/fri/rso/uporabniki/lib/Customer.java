@@ -1,4 +1,4 @@
-package si.fri.rso.chargingstations.customers.lib;
+package si.fri.rso.uporabniki.lib;
 
 public class Customer {
 

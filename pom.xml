@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>si.fri.rso.chargingstations</groupId>
-    <artifactId>customers</artifactId>
+    <groupId>si.fri.rso</groupId>
+    <artifactId>uporabniki</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <packaging>pom</packaging>
@@ -53,23 +53,23 @@
             </dependency>
 
             <dependency>
-                <groupId>si.fri.rso.chargingstations</groupId>
-                <artifactId>customers-api</artifactId>
+                <groupId>si.fri.rso</groupId>
+                <artifactId>uporabniki-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>si.fri.rso.chargingstations</groupId>
-                <artifactId>customers-models</artifactId>
+                <groupId>si.fri.rso</groupId>
+                <artifactId>uporabniki-models</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>si.fri.rso.chargingstations</groupId>
-                <artifactId>customers-services</artifactId>
+                <groupId>si.fri.rso</groupId>
+                <artifactId>uporabniki-services</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>si.fri.rso.chargingstations</groupId>
-                <artifactId>customers-lib</artifactId>
+                <groupId>si.fri.rso</groupId>
+                <artifactId>uporabniki-lib</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
         </dependencies>

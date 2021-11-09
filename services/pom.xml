@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>customers</artifactId>
-        <groupId>si.fri.rso.chargingstations</groupId>
+        <artifactId>uporabniki</artifactId>
+        <groupId>si.fri.rso</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>customers-services</artifactId>
+    <artifactId>uporabniki-services</artifactId>
 
     <dependencies>
         <dependency>
@@ -43,8 +43,8 @@
 
 
         <dependency>
-            <groupId>si.fri.rso.chargingstations</groupId>
-            <artifactId>customers-models</artifactId>
+            <groupId>si.fri.rso</groupId>
+            <artifactId>uporabniki-models</artifactId>
         </dependency>
 
     </dependencies>

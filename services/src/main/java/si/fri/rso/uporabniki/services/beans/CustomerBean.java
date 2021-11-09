@@ -1,4 +1,4 @@
-package si.fri.rso.chargingstations.customers.services.beans;
+package si.fri.rso.uporabniki.services.beans;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
 import com.kumuluz.ee.rest.beans.QueryParameters;
 import com.kumuluz.ee.rest.utils.JPAUtils;
 
-import si.fri.rso.chargingstations.customers.lib.Customer;
-import si.fri.rso.chargingstations.customers.models.converters.CustomerConverter;
-import si.fri.rso.chargingstations.customers.models.entities.CustomerEntity;
+import si.fri.rso.uporabniki.lib.Customer;
+import si.fri.rso.uporabniki.models.converters.CustomerConverter;
+import si.fri.rso.uporabniki.models.entities.CustomerEntity;
 
 
 @RequestScoped

@@ -1,4 +1,4 @@
-package si.fri.rso.chargingstations.customers.services.producers;
+package si.fri.rso.uporabniki.services.producers;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Disposes;

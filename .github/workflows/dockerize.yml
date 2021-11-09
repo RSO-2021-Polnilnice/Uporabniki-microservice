@@ -36,4 +36,4 @@ jobs:
       with:
         file: ./Dockerfile_with_maven_build
         push: true
-        tags: rso2021jklk/customers:${{ steps.time.outputs.time }}
+        tags: rso2021jklk/uporabniki:${{ steps.time.outputs.time }}

@@ -1,4 +1,4 @@
-package si.fri.rso.chargingstations.customers.api.v1;
+package si.fri.rso.uporabniki.api.v1;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

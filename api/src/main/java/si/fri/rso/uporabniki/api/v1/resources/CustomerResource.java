@@ -1,4 +1,4 @@
-package si.fri.rso.chargingstations.customers.api.v1.resources;
+package si.fri.rso.uporabniki.api.v1.resources;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -17,11 +17,11 @@ import javax.ws.rs.core.UriInfo;
 import java.util.List;
 import java.util.logging.Logger;
 
-import si.fri.rso.chargingstations.customers.lib.Customer;
-import si.fri.rso.chargingstations.customers.services.beans.CustomerBean;
+import si.fri.rso.uporabniki.lib.Customer;
+import si.fri.rso.uporabniki.services.beans.CustomerBean;
 
 @ApplicationScoped
-@Path("/customers")
+@Path("/uporabniki")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CustomerResource {

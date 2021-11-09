@@ -1,4 +1,4 @@
-package si.fri.rso.chargingstations.customers.models.entities;
+package si.fri.rso.uporabniki.models.entities;
 
 import javax.persistence.*;
 

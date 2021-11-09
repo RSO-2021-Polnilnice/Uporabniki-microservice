@@ -1,4 +1,4 @@
-package si.fri.rso.chargingstations.customers.models.converters;
+package si.fri.rso.uporabniki.models.converters;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
