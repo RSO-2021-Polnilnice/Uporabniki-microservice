@@ -2,20 +2,11 @@ package si.fri.rso.uporabniki.lib;
 
 public class Customer {
 
-    private Integer customerId;
     private String username;
     private String firstName;
     private String lastName;
     private Integer yearBorn;
     private Float funds;
-
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer userId) {
-        this.customerId = userId;
-    }
 
     public String getUsername() {
         return username;

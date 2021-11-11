@@ -46,9 +46,9 @@ public class CustomerBean {
                 .map(CustomerConverter::toDto).collect(Collectors.toList());
     }
 
-    public Customer getCustomer(Integer id) {
+    public Customer getCustomer(String username) {
 
-        CustomerEntity customerEntity = em.find(CustomerEntity.class, id);
+        CustomerEntity customerEntity = em.find(CustomerEntity.class, username);
 
         if (customerEntity == null) {
             throw new NotFoundException();
@@ -61,6 +61,14 @@ public class CustomerBean {
 
     public Customer createCustomer(Customer customer) {
 
+        // Searching if user with such username already exists
+        CustomerEntity findExistingCustomerEntity = em.find(CustomerEntity.class, customer.getUsername());
+
+        // If it exists, throw error
+        if (findExistingCustomerEntity != null) {
+            throw new RuntimeException("User with this username already exists");
+        }
+
         CustomerEntity customerEntity = CustomerConverter.toEntity(customer);
 
         try {
@@ -72,16 +80,16 @@ public class CustomerBean {
             rollbackTx();
         }
 
-        if (customerEntity.getId() == null) {
+        if (customerEntity.getUsername() == null) {
             throw new RuntimeException("Entity was not persisted");
         }
 
         return CustomerConverter.toDto(customerEntity);
     }
 
-    public Customer putCustomer(Integer id, Customer customer) {
+    public Customer putCustomer(String username, Customer customer) {
 
-        CustomerEntity c = em.find(CustomerEntity.class, id);
+        CustomerEntity c = em.find(CustomerEntity.class, username);
 
         if (c == null) {
             return null;
@@ -91,7 +99,7 @@ public class CustomerBean {
 
         try {
             beginTx();
-            updatedCustomerEntity.setId(c.getId());
+            updatedCustomerEntity.setUsername(c.getUsername());
             updatedCustomerEntity = em.merge(updatedCustomerEntity);
             commitTx();
         }
@@ -102,9 +110,9 @@ public class CustomerBean {
         return CustomerConverter.toDto(updatedCustomerEntity);
     }
 
-    public boolean deleteCustomer(Integer id) {
+    public boolean deleteCustomer(String username) {
 
-        CustomerEntity customer = em.find(CustomerEntity.class, id);
+        CustomerEntity customer = em.find(CustomerEntity.class, username);
 
         if (customer != null) {
             try {

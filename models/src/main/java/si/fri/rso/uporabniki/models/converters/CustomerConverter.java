@@ -8,7 +8,6 @@ public class CustomerConverter {
     public static Customer toDto(CustomerEntity entity) {
 
         Customer dto = new Customer();
-        dto.setCustomerId(entity.getId());
         dto.setUsername(entity.getUsername());
         dto.setFirstName(entity.getFirstName());
         dto.setLastName(entity.getLastName());

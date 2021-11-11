@@ -7,15 +7,15 @@ import javax.persistence.*;
 @NamedQueries(value =
         {
                 @NamedQuery(name = "CustomerEntity.getAll",
-                        query = "SELECT im FROM CustomerEntity im")
+                        query = "SELECT c FROM CustomerEntity c"),
+
+                @NamedQuery(name = "CustomerEntity.getByUsername",
+                        query = "SELECT c FROM CustomerEntity c WHERE c.username = :username"),
         })
 public class CustomerEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @Column(name = "username")
+    @Column(name = "username", nullable = false)
     private String username;
 
     @Column(name = "firstName")
@@ -29,14 +29,6 @@ public class CustomerEntity {
 
     @Column(name = "funds")
     private Float funds;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public void setUsername(String username) {
         this.username = username;

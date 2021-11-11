@@ -43,10 +43,10 @@ public class CustomerResource {
     }
 
     @GET
-    @Path("/{customerId}")
-    public Response getCustomer(@PathParam("customerId") Integer customerId) {
+    @Path("/{username}")
+    public Response getCustomer(@PathParam("username") String username) {
 
-        Customer customer = customerBean.getCustomer(customerId);
+        Customer customer = customerBean.getCustomer(username);
 
         if (customer == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -70,11 +70,11 @@ public class CustomerResource {
     }
 
     @PUT
-    @Path("{customerId}")
-    public Response putCustomer(@PathParam("customerId") Integer customerId,
+    @Path("{username}")
+    public Response putCustomer(@PathParam("username") String username,
                                      Customer customer) {
 
-        customer = customerBean.putCustomer(customerId, customer);
+        customer = customerBean.putCustomer(username, customer);
 
         if (customer == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -85,10 +85,10 @@ public class CustomerResource {
     }
 
     @DELETE
-    @Path("{customerId}")
-    public Response deleteCustomer(@PathParam("customerId") Integer customerId) {
+    @Path("{username}")
+    public Response deleteCustomer(@PathParam("username") String username) {
 
-        boolean deleted = customerBean.deleteCustomer(customerId);
+        boolean deleted = customerBean.deleteCustomer(username);
 
         if (deleted) {
             return Response.status(Response.Status.NO_CONTENT).build();
