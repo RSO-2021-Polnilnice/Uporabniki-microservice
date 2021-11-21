@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 
 import si.fri.rso.uporabniki.lib.Customer;
 import si.fri.rso.uporabniki.services.beans.CustomerBean;
+import si.fri.rso.uporabniki.services.config.RestProperties;
 
 @ApplicationScoped
 @Path("/uporabniki")
@@ -53,6 +54,26 @@ public class CustomerResource {
         }
 
         return Response.status(Response.Status.OK).entity(customer).build();
+    }
+
+    @Inject
+    private RestProperties properties;
+
+    @GET
+    @Path("/config")
+    public Response test() {
+        String response =
+                "{" +
+                        "\"maintenanceMode\": %b," +
+                        "\"broken\": %b" +
+                        "}";
+
+        response = String.format(
+                response,
+                properties.getMaintenanceMode(),
+                properties.getBroken());
+
+        return Response.ok(response).build();
     }
 
     @POST
