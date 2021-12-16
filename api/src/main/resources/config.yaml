@@ -12,6 +12,15 @@ kumuluzee:
       connection-url: jdbc:postgresql://localhost:5432/customer
       username: dbuser
       password: postgres
+  health:
+    checks:
+      data-source-health-check:
+        type: liveness
+        jndi-name: jdbc/CustomerDS
+    metrics:
+      web-instrumentation:
+        - name: uporabniki-endpoint
+          url-pattern: /v1/uporabniki/*
 rest-properties:
   maintenance-mode: false
 
