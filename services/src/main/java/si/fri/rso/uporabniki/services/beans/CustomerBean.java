@@ -4,10 +4,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.util.List;
 import java.util.logging.Logger;
@@ -19,7 +16,6 @@ import com.kumuluz.ee.rest.utils.JPAUtils;
 import si.fri.rso.uporabniki.lib.Customer;
 import si.fri.rso.uporabniki.models.converters.CustomerConverter;
 import si.fri.rso.uporabniki.models.entities.CustomerEntity;
-import si.fri.rso.uporabniki.services.config.RestProperties;
 
 
 @RequestScoped

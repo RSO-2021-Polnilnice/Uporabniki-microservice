@@ -1,4 +1,4 @@
-package si.fri.rso.uporabniki.services.config;
+package si.fri.rso.uporabniki.config;
 
 import com.kumuluz.ee.configuration.cdi.ConfigBundle;
 import com.kumuluz.ee.configuration.cdi.ConfigValue;

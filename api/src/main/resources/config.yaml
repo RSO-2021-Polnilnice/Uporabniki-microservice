@@ -21,6 +21,11 @@ kumuluzee:
       web-instrumentation:
         - name: uporabniki-endpoint
           url-pattern: /v1/uporabniki/*
+  rest-client:
+    registrations:
+      - class: customer-api
+        url: http://localhost:8082/v1
+        read-timeout: 5000
 rest-properties:
   maintenance-mode: false
 

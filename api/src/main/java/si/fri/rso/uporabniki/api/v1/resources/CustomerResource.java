@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 
 import si.fri.rso.uporabniki.lib.Customer;
 import si.fri.rso.uporabniki.services.beans.CustomerBean;
-import si.fri.rso.uporabniki.services.config.RestProperties;
+import si.fri.rso.uporabniki.config.RestProperties;
 
 @ApplicationScoped
 @Path("/uporabniki")

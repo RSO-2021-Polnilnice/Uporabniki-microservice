@@ -1,6 +1,6 @@
 package si.fri.rso.uporabniki.api.v1.filters;
 
-import si.fri.rso.uporabniki.services.config.RestProperties;
+import si.fri.rso.uporabniki.config.RestProperties;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
