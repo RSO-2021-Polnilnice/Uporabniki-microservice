@@ -15,7 +15,10 @@ import javax.persistence.*;
 public class CustomerEntity {
 
     @Id
-    @Column(name = "username", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     @Column(name = "firstName")
@@ -29,6 +32,9 @@ public class CustomerEntity {
 
     @Column(name = "funds")
     private Float funds;
+
+    @Column(name = "charging")
+    private Boolean charging;
 
     public void setUsername(String username) {
         this.username = username;
@@ -68,5 +74,21 @@ public class CustomerEntity {
 
     public Float getFunds() {
         return funds;
+    }
+
+    public void setCharging(Boolean charging) {
+        this.charging = charging;
+    }
+
+    public Boolean getCharging() {
+        return charging;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }

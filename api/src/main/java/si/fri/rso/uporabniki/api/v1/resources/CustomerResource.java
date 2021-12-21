@@ -17,14 +17,25 @@ import javax.ws.rs.core.UriInfo;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.kumuluz.ee.cors.annotations.CrossOrigin;
+import com.kumuluz.ee.logs.cdi.Log;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
+import org.eclipse.microprofile.openapi.annotations.headers.Header;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import si.fri.rso.uporabniki.lib.Customer;
 import si.fri.rso.uporabniki.services.beans.CustomerBean;
 import si.fri.rso.uporabniki.config.RestProperties;
 
+@Log
 @ApplicationScoped
 @Path("/uporabniki")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@CrossOrigin(supportedMethods = "GET, POST, HEAD, DELETE, OPTIONS")
 public class CustomerResource {
 
     private Logger log = Logger.getLogger(CustomerResource.class.getName());
@@ -35,6 +46,13 @@ public class CustomerResource {
     @Context
     protected UriInfo uriInfo;
 
+    @Operation(description = "Get all customers.", summary = "Get all customers")
+    @APIResponses({
+            @APIResponse(responseCode = "200",
+                    description = "List of users",
+                    content = @Content(schema = @Schema(implementation = Customer.class, type = SchemaType.ARRAY)),
+                    headers = {@Header(name = "X-Total-Count", description = "Number of objects in list")}
+            )})
     @GET
     public Response getCustomer() {
 
@@ -43,11 +61,19 @@ public class CustomerResource {
         return Response.status(Response.Status.OK).entity(customer).build();
     }
 
-    @GET
-    @Path("/{username}")
-    public Response getCustomer(@PathParam("username") String username) {
 
-        Customer customer = customerBean.getCustomer(username);
+    @Operation(description = "Get customer.", summary = "Get customer")
+    @APIResponses({
+            @APIResponse(responseCode = "200",
+                    description = "Customer",
+                    content = @Content(
+                            schema = @Schema(implementation = Customer.class))
+            )})
+    @GET
+    @Path("/{id}")
+    public Response getCustomer(@PathParam("id") Integer id) {
+
+        Customer customer = customerBean.getCustomer(id);
 
         if (customer == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -59,6 +85,7 @@ public class CustomerResource {
     @Inject
     private RestProperties properties;
 
+    // TODO only for testing purposes, remove later
     @GET
     @Path("/config")
     public Response test() {
@@ -76,10 +103,20 @@ public class CustomerResource {
         return Response.ok(response).build();
     }
 
+
+    @Operation(description = "Add customer.", summary = "Add customer")
+    @APIResponses({
+            @APIResponse(responseCode = "201",
+                    description = "Customer successfully added."
+            ),
+            @APIResponse(responseCode = "405", description = "Validation error .")
+    })
     @POST
     public Response createCustomer(Customer customer) {
 
-        if ((customer.getUsername() == null || customer.getFirstName() == null || customer.getLastName() == null)) {
+        customer.setCharging(false);
+
+        if ((customer.getId() == null || customer.getUsername() == null || customer.getFirstName() == null || customer.getLastName() == null)) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         else {
@@ -90,12 +127,19 @@ public class CustomerResource {
 
     }
 
+    @Operation(description = "Update customer.", summary = "Update customer")
+    @APIResponses({
+            @APIResponse(
+                    responseCode = "200",
+                    description = "Customer successfully updated."
+            )
+    })
     @PUT
-    @Path("{username}")
-    public Response putCustomer(@PathParam("username") String username,
+    @Path("{id}")
+    public Response putCustomer(@PathParam("id") Integer id,
                                      Customer customer) {
 
-        customer = customerBean.putCustomer(username, customer);
+        customer = customerBean.putCustomer(id, customer);
 
         if (customer == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -105,11 +149,22 @@ public class CustomerResource {
 
     }
 
+    @Operation(description = "Delete customer.", summary = "Delete customer")
+    @APIResponses({
+            @APIResponse(
+                    responseCode = "200",
+                    description = "Customer successfully deleted."
+            ),
+            @APIResponse(
+                    responseCode = "404",
+                    description = "Not found."
+            )
+    })
     @DELETE
-    @Path("{username}")
-    public Response deleteCustomer(@PathParam("username") String username) {
+    @Path("{id}")
+    public Response deleteCustomer(@PathParam("id") Integer id) {
 
-        boolean deleted = customerBean.deleteCustomer(username);
+        boolean deleted = customerBean.deleteCustomer(id);
 
         if (deleted) {
             return Response.status(Response.Status.NO_CONTENT).build();

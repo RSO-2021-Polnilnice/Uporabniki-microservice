@@ -24,8 +24,8 @@ public class CustomerMutations {
     }
 
     @GraphQLMutation
-    public DeleteResponse deleteCustomer(@GraphQLArgument(name = "username") String username) {
-        return new DeleteResponse(customerBean.deleteCustomer(username));
+    public DeleteResponse deleteCustomer(@GraphQLArgument(name = "id") Integer id) {
+        return new DeleteResponse(customerBean.deleteCustomer(id));
     }
 
 }

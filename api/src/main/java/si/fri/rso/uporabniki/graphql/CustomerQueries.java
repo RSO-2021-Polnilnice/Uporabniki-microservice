@@ -30,8 +30,8 @@ public class CustomerQueries {
     }
 
     @GraphQLQuery
-    public Customer getCustomer(@GraphQLArgument(name = "username") String username) {
-        return customerBean.getCustomer(username);
+    public Customer getCustomer(@GraphQLArgument(name = "id") Integer id) {
+        return customerBean.getCustomer(id);
     }
 
 }
