@@ -116,7 +116,7 @@ public class CustomerResource {
 
         customer.setCharging(false);
 
-        if ((customer.getId() == null || customer.getUsername() == null || customer.getFirstName() == null || customer.getLastName() == null)) {
+        if ((customer.getUsername() == null || customer.getFirstName() == null || customer.getLastName() == null)) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         else {

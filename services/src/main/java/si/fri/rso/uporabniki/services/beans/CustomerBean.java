@@ -95,14 +95,6 @@ public class CustomerBean {
 
     public Customer createCustomer(Customer customer) {
 
-        // Searching if user with such username already exists
-        CustomerEntity findExistingCustomerEntity = em.find(CustomerEntity.class, customer.getUsername());
-
-        // If it exists, throw error
-        if (findExistingCustomerEntity != null) {
-            throw new RuntimeException("User with this username already exists");
-        }
-
         CustomerEntity customerEntity = CustomerConverter.toEntity(customer);
 
         try {
@@ -133,7 +125,7 @@ public class CustomerBean {
 
         try {
             beginTx();
-            updatedCustomerEntity.setUsername(c.getUsername());
+            updatedCustomerEntity.setId(c.getId());
             updatedCustomerEntity = em.merge(updatedCustomerEntity);
             commitTx();
         }
