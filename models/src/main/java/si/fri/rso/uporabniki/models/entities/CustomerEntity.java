@@ -11,6 +11,10 @@ import javax.persistence.*;
 
                 @NamedQuery(name = "CustomerEntity.getById",
                         query = "SELECT c FROM CustomerEntity c WHERE c.id = :id"),
+
+                // TODO change this
+                @NamedQuery(name = "CustomerEntity.getSubscribedEmails",
+                        query = "SELECT c FROM CustomerEntity c"),
         })
 public class CustomerEntity {
 
@@ -20,6 +24,9 @@ public class CustomerEntity {
 
     @Column(name = "username", nullable = false, unique = true)
     private String username;
+
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 
     @Column(name = "firstName")
     private String firstName;
@@ -90,5 +97,13 @@ public class CustomerEntity {
 
     public Integer getId() {
         return id;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

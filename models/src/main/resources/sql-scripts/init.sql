@@ -1,1 +1,1 @@
-INSERT INTO customer (username, firstName, lastName, yearBorn, funds, charging) VALUES ('testuser1', 'User', 'Bloke', 1998, 1234.5, false);
+INSERT INTO customer (username, email, firstName, lastName, yearBorn, funds, charging) VALUES ('testuser1', 'test@test.si', 'User', 'Bloke', 1998, 1234.5, false);

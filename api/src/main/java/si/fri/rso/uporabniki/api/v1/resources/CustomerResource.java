@@ -61,6 +61,22 @@ public class CustomerResource {
         return Response.status(Response.Status.OK).entity(customer).build();
     }
 
+    @Operation(description = "Get emails of subscribed customers.", summary = "Get emails of subscribed customers")
+    @APIResponses({
+            @APIResponse(responseCode = "200",
+                    description = "List of users",
+                    content = @Content(schema = @Schema(implementation = Customer.class, type = SchemaType.ARRAY)),
+                    headers = {@Header(name = "X-Total-Count", description = "Number of objects in list")}
+            )})
+    @GET
+    @Path(("/emails"))
+    public Response getCustomerEmails() {
+
+        List<Customer> customer = customerBean.getCustomerEmails();
+
+        return Response.status(Response.Status.OK).entity(customer).build();
+    }
+
 
     @Operation(description = "Get customer.", summary = "Get customer")
     @APIResponses({

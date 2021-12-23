@@ -2,10 +2,10 @@
 
 ## Prerequisites
 
-Create network **rso-polnilnice** if there is none:
+Create network **rsonet** if there is none:
 
 ```bash
-docker network create rso-polnilnice
+docker network create rsonet
 ```
 
 Run Consul Docker container:

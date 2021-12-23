@@ -4,6 +4,7 @@ public class Customer {
 
     private Integer id;
     private String username;
+    private String email;
     private String firstName;
     private String lastName;
     private Integer yearBorn;
@@ -64,5 +65,13 @@ public class Customer {
 
     public Integer getId() {
         return id;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

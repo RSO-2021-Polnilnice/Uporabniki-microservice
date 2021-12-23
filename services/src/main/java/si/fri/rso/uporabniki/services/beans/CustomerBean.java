@@ -12,6 +12,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.io.Console;
 import java.io.IOException;
@@ -77,6 +78,16 @@ public class CustomerBean {
 
         return JPAUtils.queryEntities(em, CustomerEntity.class, queryParameters).stream()
                 .map(CustomerConverter::toDto).collect(Collectors.toList());
+    }
+
+    public List<Customer> getCustomerEmails() {
+
+        TypedQuery<CustomerEntity> query = em.createNamedQuery(
+                "CustomerEntity.getSubscribedEmails", CustomerEntity.class);
+
+        List<CustomerEntity> resultList = query.getResultList();
+
+        return resultList.stream().map(CustomerConverter::toDto).collect(Collectors.toList());
     }
 
     public Customer getCustomer(Integer id) {
