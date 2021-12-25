@@ -43,9 +43,6 @@ public class CustomerResource {
     @Inject
     private CustomerBean customerBean;
 
-    @Context
-    protected UriInfo uriInfo;
-
     @Operation(description = "Get all customers.", summary = "Get all customers")
     @APIResponses({
             @APIResponse(responseCode = "200",
@@ -56,7 +53,7 @@ public class CustomerResource {
     @GET
     public Response getCustomer() {
 
-        List<Customer> customer = customerBean.getCustomerFilter(uriInfo);
+        List<Customer> customer = customerBean.getCustomer();
 
         return Response.status(Response.Status.OK).entity(customer).build();
     }

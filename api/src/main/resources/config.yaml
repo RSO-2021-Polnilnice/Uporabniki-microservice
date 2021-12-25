@@ -1,5 +1,5 @@
 kumuluzee:
-  name: Uporabniki-service
+  name: uporabniki-service
   env:
     name: dev
   version: 1.0.0
@@ -26,6 +26,12 @@ kumuluzee:
       - class: customer-api
         url: http://localhost:8082/v1
         read-timeout: 5000
+  discovery:
+    cluster: 1
+    consul:
+      agent: http://consul:8500
+    ttl: 20
+    ping-interval: 15
 rest-properties:
   maintenance-mode: false
 
