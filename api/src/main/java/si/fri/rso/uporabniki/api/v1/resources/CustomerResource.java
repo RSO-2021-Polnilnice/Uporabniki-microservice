@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import com.kumuluz.ee.cors.annotations.CrossOrigin;
-import com.kumuluz.ee.logs.cdi.Log;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.headers.Header;
@@ -30,7 +29,6 @@ import si.fri.rso.uporabniki.lib.Customer;
 import si.fri.rso.uporabniki.services.beans.CustomerBean;
 import si.fri.rso.uporabniki.config.RestProperties;
 
-@Log
 @ApplicationScoped
 @Path("/uporabniki")
 @Produces(MediaType.APPLICATION_JSON)
