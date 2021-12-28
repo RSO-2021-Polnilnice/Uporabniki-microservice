@@ -12,7 +12,7 @@ public class RestProperties {
     @ConfigValue(watch = true)
     private Boolean maintenanceMode;
 
-    private Boolean broken;
+    private Boolean broken = false;
 
     public Boolean getMaintenanceMode() {
         return this.maintenanceMode;

@@ -25,6 +25,9 @@ public class CustomerEntity {
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
+    @Column(name = "password", nullable = false, unique = true)
+    private String password;
+
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
@@ -105,5 +108,13 @@ public class CustomerEntity {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

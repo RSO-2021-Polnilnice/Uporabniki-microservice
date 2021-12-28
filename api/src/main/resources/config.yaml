@@ -24,14 +24,12 @@ kumuluzee:
   rest-client:
     registrations:
       - class: customer-api
-        url: http://localhost:8082/v1
+        url: http://localhost:8080/v1
         read-timeout: 5000
   discovery:
-    cluster: 1
+    cluster: 42
     consul:
-      agent: http://consul:8500
-    ttl: 20
-    ping-interval: 15
+      agent: http://localhost:8500
 rest-properties:
   maintenance-mode: false
 

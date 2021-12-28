@@ -4,6 +4,7 @@ public class Customer {
 
     private Integer id;
     private String username;
+    private String password;
     private String email;
     private String firstName;
     private String lastName;
@@ -73,5 +74,13 @@ public class Customer {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }
