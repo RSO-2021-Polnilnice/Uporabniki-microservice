@@ -12,9 +12,11 @@ import javax.persistence.*;
                 @NamedQuery(name = "CustomerEntity.getById",
                         query = "SELECT c FROM CustomerEntity c WHERE c.id = :id"),
 
-                // TODO change this
                 @NamedQuery(name = "CustomerEntity.getSubscribedEmails",
                         query = "SELECT c FROM CustomerEntity c"),
+
+                @NamedQuery(name = "CustomerEntity.getByUsername",
+                        query = "SELECT c FROM CustomerEntity c WHERE c.username = :username"),
         })
 public class CustomerEntity {
 

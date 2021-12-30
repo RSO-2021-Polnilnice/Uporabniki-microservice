@@ -106,6 +106,18 @@ public class CustomerBean {
 
     public Customer createCustomer(Customer customer) {
 
+        TypedQuery<CustomerEntity> query = em.createQuery(
+                "SELECT c FROM CustomerEntity c WHERE c.username = '" + customer.getUsername() +"'",
+                CustomerEntity.class);
+
+        List<CustomerEntity> resultList = query.getResultList();
+
+        System.out.println(resultList.size());
+
+        if (resultList.size() != 0) {
+            return null;
+        }
+
         CustomerEntity customerEntity = CustomerConverter.toEntity(customer);
 
         try {
