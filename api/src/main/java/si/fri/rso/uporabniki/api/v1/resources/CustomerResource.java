@@ -15,9 +15,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.util.List;
-import java.util.logging.Logger;
 
 import com.kumuluz.ee.cors.annotations.CrossOrigin;
+import com.kumuluz.ee.logs.LogManager;
+import com.kumuluz.ee.logs.Logger;
+import com.kumuluz.ee.logs.cdi.Log;
+import com.kumuluz.ee.logs.cdi.LogParams;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.headers.Header;
@@ -29,6 +32,7 @@ import si.fri.rso.uporabniki.lib.Customer;
 import si.fri.rso.uporabniki.services.beans.CustomerBean;
 import si.fri.rso.uporabniki.config.RestProperties;
 
+@Log
 @ApplicationScoped
 @Path("/uporabniki")
 @Produces(MediaType.APPLICATION_JSON)
@@ -36,7 +40,7 @@ import si.fri.rso.uporabniki.config.RestProperties;
 @CrossOrigin(supportedMethods = "GET, POST, HEAD, DELETE, OPTIONS")
 public class CustomerResource {
 
-    private Logger log = Logger.getLogger(CustomerResource.class.getName());
+    private static final Logger LOG = LogManager.getLogger(CustomerResource.class.getName());
 
     @Inject
     private CustomerBean customerBean;
@@ -64,6 +68,7 @@ public class CustomerResource {
                     headers = {@Header(name = "X-Total-Count", description = "Number of objects in list")}
             )})
     @GET
+    @Log(LogParams.METRICS)
     @Path(("/emails"))
     public Response getCustomerEmails() {
 
@@ -122,6 +127,7 @@ public class CustomerResource {
             ),
             @APIResponse(responseCode = "405", description = "Validation error .")
     })
+    @Log(value = LogParams.METRICS)
     @POST
     public Response createCustomer(Customer customer) {
 
