@@ -140,7 +140,7 @@ public class CustomerResource {
             customer = customerBean.createCustomer(customer);
         }
 
-        return Response.status(Response.Status.CONFLICT).entity(customer).build();
+        return Response.status(Response.Status.CREATED).entity(customer).build();
 
     }
 
