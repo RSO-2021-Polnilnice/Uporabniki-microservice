@@ -37,7 +37,7 @@ import si.fri.rso.uporabniki.config.RestProperties;
 @Path("/uporabniki")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@CrossOrigin(supportedMethods = "GET, POST, HEAD, DELETE, OPTIONS")
+@CrossOrigin(supportedMethods = "GET, POST, PUT, HEAD, DELETE, OPTIONS")
 public class CustomerResource {
 
     private static final Logger LOG = LogManager.getLogger(CustomerResource.class.getName());
