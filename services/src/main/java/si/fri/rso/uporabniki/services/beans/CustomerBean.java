@@ -34,6 +34,7 @@ import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.faulttolerance.Timeout;
+import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.Timed;
 import org.jboss.weld.bootstrap.api.helpers.ForwardingBootstrap;
 import si.fri.rso.uporabniki.lib.Customer;
@@ -59,7 +60,6 @@ public class CustomerBean {
         baseUrl = "http://localhost:8081";
     }
 
-    @Timed
     public List<Customer> getCustomer() {
 
         TypedQuery<CustomerEntity> query = em.createNamedQuery(
@@ -80,6 +80,7 @@ public class CustomerBean {
                 .map(CustomerConverter::toDto).collect(Collectors.toList());
     }
 
+    @Timed
     public List<Customer> getCustomerEmails() {
 
         TypedQuery<CustomerEntity> query = em.createNamedQuery(
@@ -104,6 +105,7 @@ public class CustomerBean {
         return customer;
     }
 
+    @Counted
     public Customer createCustomer(Customer customer) {
 
         TypedQuery<CustomerEntity> query = em.createQuery(
