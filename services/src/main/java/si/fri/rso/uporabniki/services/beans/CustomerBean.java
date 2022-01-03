@@ -59,6 +59,7 @@ public class CustomerBean {
         baseUrl = "http://localhost:8081";
     }
 
+    @Timed
     public List<Customer> getCustomer() {
 
         TypedQuery<CustomerEntity> query = em.createNamedQuery(
@@ -70,7 +71,6 @@ public class CustomerBean {
 
     }
 
-    @Timed
     public List<Customer> getCustomerFilter(UriInfo uriInfo) {
 
         QueryParameters queryParameters = QueryParameters.query(uriInfo.getRequestUri().getQuery()).defaultOffset(0)

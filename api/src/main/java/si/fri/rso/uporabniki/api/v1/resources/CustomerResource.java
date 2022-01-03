@@ -162,10 +162,10 @@ public class CustomerResource {
         customer = customerBean.putCustomer(id, customer);
 
         if (customer == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         }
 
-        return Response.status(Response.Status.NOT_MODIFIED).build();
+        return Response.status(Response.Status.OK).build();
 
     }
 
