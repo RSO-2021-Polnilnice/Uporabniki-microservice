@@ -13,7 +13,7 @@ import org.eclipse.microprofile.openapi.annotations.servers.Server;
 @OpenAPIDefinition(info = @Info(title = "Customers API", version = "v1",
         contact = @Contact(email = "rso2021jklk@gmail.com"),
         license = @License(name = "dev"), description = "API for managing customers."),
-        servers = @Server(url = "http://20.83.140.172:8080/"))
+        servers = @Server(url = "http://20.83.140.172/uporabniki/"))
 @ApplicationPath("/v1")
 public class CustomerApplication extends Application {
 
