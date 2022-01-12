@@ -12,6 +12,9 @@ kumuluzee:
       connection-url: jdbc:postgresql://localhost:5432/customer
       username: dbuser
       password: postgres
+      pool:
+        min-size: 0
+        max-size: 2
   health:
     checks:
       data-source-health-check:
